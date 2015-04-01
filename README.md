@@ -7,6 +7,7 @@
 
 # deploy
 * install Tomcat 7, you can download tomcat 7 from https://tomcat.apache.org/download-70.cgi
+* remove existing app(including tomcat's example apps): rm -rf $TOMCAT_ROOT/webapps/*
 * copy mainWebApp/build/libs/mainWebApp.war to $TOMCAT_ROOT/webapps/ROOT.war
 * start tomcat
 
