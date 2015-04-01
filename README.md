@@ -1,1 +1,11 @@
 # chatroom
+
+# build
+<code>
+./gradlew clean build
+</code>
+
+# deploy
+## install Tomcat 7, you can download tomcat 7 from https://tomcat.apache.org/download-70.cgi
+
+http://104.167.113.195:8080/demo.html
