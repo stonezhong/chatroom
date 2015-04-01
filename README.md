@@ -6,6 +6,10 @@
 </code>
 
 # deploy
-## install Tomcat 7, you can download tomcat 7 from https://tomcat.apache.org/download-70.cgi
+* install Tomcat 7, you can download tomcat 7 from https://tomcat.apache.org/download-70.cgi
+* copy mainWebApp/build/libs/mainWebApp.war to $TOMCAT_ROOT/webapps/ROOT.war
+* start tomcat
 
-http://104.167.113.195:8080/demo.html
+# test
+It has been deployed at http://104.167.113.195:8080/demo.html
+
