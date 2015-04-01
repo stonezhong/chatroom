@@ -5,13 +5,14 @@
     <title>Chat is fun</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <script type="text/javascript" >
-        var appRoot = "mainWebApp/";
-        // var appRoot = "";
+        // var appRoot = "mainWebApp/";
+        var appRoot = "";
         var ws;
 
         function join() {
             var roomName = $("#roomName").val();
-            ws = new WebSocket("ws://localhost:8080/" + appRoot + roomName);
+            var serverEndpoint = window.location.href.split("/")[2];
+            ws = new WebSocket("ws://" + serverEndpoint + "/" + appRoot + roomName);
             ws.onopen = function() {
                 $("#roomName").prop("disabled", true);
                 $("#join").prop("disabled", true);
