@@ -1,7 +1,6 @@
-这个demo展示Servlet Container 3.0的一些功能
+timeline
 
-- ServletContextListener: 用以监听web application的生命周期
-- ServletRequestListener: 用以监听web request的生命周期
-- Servlet Filter:         可以在请求到达servlet前做预处理。
-
-测试，访问http://<site>/<appPath>/HelloWorld
+1. a websocket upgrade request comes in
+2. ChatRoomFilter will put client ip and port in sessions, key CLIENT_ENDPOINT_KEY
+3. ChatEndpointConfigurator.modifyHandshake is called, it get the client ip and port from http session, and put it into user property, this property will be copied to websocket session
+4. ChatRoomEndpoint.onOpen is called, it extract the client ip and port from websocket session

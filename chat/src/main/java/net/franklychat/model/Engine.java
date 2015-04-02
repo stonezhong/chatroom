@@ -30,5 +30,14 @@ public class Engine {
         chatRoomByName.remove(name);
     }
     
+    synchronized public ChatRoom getOrCreateChatRoom(String name) {
+        ChatRoom chatRoom = chatRoomByName.get(name);
+        if (chatRoom == null) {
+            chatRoom = new ChatRoom(name);
+            chatRoomByName.put(name, chatRoom);
+        }
+        return chatRoom;
+    }
+    
     
 }

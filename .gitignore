@@ -1,4 +1,8 @@
 .gradle/
 chat/build/
 mainWebApp/build/
-
+gitchatroom.iml
+gitchatroom.ipr
+gitchatroom.iws
+chat/chat.iml
+mainWebApp/mainWebApp.iml

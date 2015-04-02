@@ -3,6 +3,7 @@ package myWeb;
 import net.franklychat.model.ChatRoom;
 import net.franklychat.model.Client;
 import net.franklychat.model.ClientEndpoint;
+import net.franklychat.model.Engine;
 import net.franklychat.model.MessengerProxy;
 
 import javax.websocket.CloseReason;
@@ -21,15 +22,17 @@ public class ChatRoomEndpoint extends Endpoint  {
     public void onOpen(Session session, EndpointConfig endpointConfig) {
         RemoteEndpoint.Basic remoteEndpointBasic = session.getBasicRemote();
 
-        ClientEndpoint clientEndpoint = (ClientEndpoint)session.getUserProperties().get("clientEndpoint");
-        ChatRoom chatRoom = (ChatRoom)session.getUserProperties().get("chatRoom");
+        ClientEndpoint clientEndpoint = (ClientEndpoint)session.getUserProperties().get(Constants.CLIENT_ENDPOINT_KEY);
 
+        String roomName = session.getRequestParameterMap().get(Constants.ROOM_NAME).get(0);
+        Engine engine = Engine.getEngine();
+        
+        ChatRoom chatRoom = engine.getOrCreateChatRoom(roomName);
         ChatRoomMessageHandler messageHandler = new ChatRoomMessageHandler(remoteEndpointBasic);
         Client client = new Client(clientEndpoint, messageHandler);
         messageHandler.setClient(client);
-        
-        chatRoom.addClient(client);
 
+        chatRoom.addClient(client);
         session.addMessageHandler(messageHandler);
         this.client = client;
 
